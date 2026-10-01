@@ -1,9 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Gästbok</title>
+    <link rel="stylesheet" href="static/style.css" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <h1>Gästbok</h1>
+
+      <form method="post">
+        <label
+          >Namn
+          <input type="text" name="name" maxlength="60" required />
+        </label>
+        <label
+          >Inlägg
+          <textarea name="comment" rows="4" maxlength="500" required></textarea>
+        </label>
+        <button type="submit">Skicka</button>
+      </form>
+
+      <h2>Inlägg</h2>
+
+      {% for entry in entries %}
+      <div class="entry">
+        <strong>{{ entry.name }}</strong>
+        <span class="time">{{ entry.time }}</span>
+        <p class="comment">{{ entry.comment }}</p>
+      </div>
+      {% endfor %}
+    </main>
+  </body>
 </html>
